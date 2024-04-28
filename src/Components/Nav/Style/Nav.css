@@ -1,0 +1,90 @@
+.nav_main {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  color: white;
+}
+.scrolled {
+  background-color: rgb(20, 20, 20);
+  transition: background-color 0.5s ease;
+}
+
+.right-nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+}
+
+.left-nav{
+  position:fixed;
+  right:30px;
+  top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+.nav_icons{
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.nav_accounts{
+  width:25px;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  height: 100%;
+}
+.accounts{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+}
+
+.nav_logo {
+  cursor: pointer;
+  position: fixed;
+  left: 30px;
+  width: 70px;
+}
+
+.nav_avatar {
+  cursor: pointer;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  right: 60px;
+  width: 40px;
+}
+
+
+.nav_list {
+  cursor: pointer;
+
+  }
+
+
+.list_component {
+  padding-left: 120px;
+  font-size: small;
+   font-weight:800;
+   color: white;
+}
+
+
+.navbar {
+  --bs-navbar-padding-x: initial !important; /* or unset */
+
+}
+.navbar-nav {
+ --bs-nav-link-padding-x: initial !important; /* or unset */
+}
