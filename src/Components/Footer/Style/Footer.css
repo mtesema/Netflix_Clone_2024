@@ -21,7 +21,7 @@
 
 .member-footer-link-wrapper {
   list-style-type: none;
-  font-size: 16px;
+  font-size: 14px;
   padding: 0;
   margin: 0;
   margin-bottom: 10px;
@@ -35,7 +35,7 @@
 }
 
 .service-code {
-  border: 1px solid #ccc;
+  border: 1px solid gray;
   background-color: transparent; 
   padding: 10px 20px; 
   font-size: 14px; 
@@ -45,7 +45,8 @@
 }
 
 .service-code:hover {
-  border-color: #000; /* Change border color on hover */
+  color: white;
+  
 }
 
 .service_code_wrapper{
