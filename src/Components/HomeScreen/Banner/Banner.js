@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import "./Banner.css";
-import requests from "../../Axios/Request"
-import axiosLocal from "../../Axios/Axios";
+import requests from "../../../Axios/Request"
+import axiosLocal from "../../../Axios/Axios";
 
 function Banner() {
 

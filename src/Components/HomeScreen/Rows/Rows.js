@@ -1,6 +1,6 @@
 import React from 'react'
 import RowProps from './RowProps/RowProps'
-import requests from "../../Axios/Request";
+import requests from "../../../Axios/Request";
 
 function Rows() {
   return (

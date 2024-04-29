@@ -1,0 +1,151 @@
+.loginScreen {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/85e22987-d2dd-46ca-b8b7-65cd0e31c24a/629ae878-26a7-4d88-b12b-af5018a1f7b2/US-en-20201123-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  
+  .loginScreen_background {
+    cursor: pointer;
+    position: fixed;
+    left: 30px;
+    top: 20px;
+    width: 150px;
+  }
+  
+  .loginScreen_gradient {
+    width: 100%;
+    z-index: 1;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+
+  .loginScreen_body{
+    position: absolute;
+    top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    z-index: 1;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    left: 0;
+    right: 0;
+ 
+
+  }
+
+  .loginScreen_description h1 {
+    font-size: 3rem !important;
+    font-weight: 800 !important;
+    font-style: bold;
+    color: rgb(255, 255, 255);
+    left: 0;
+    right: 0;
+   
+  }
+  
+  .loginScreen_subtext h2 {
+    font-size: 1.5rem;
+    font-weight: 550;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+  }
+  
+  .loginScreen_inputContainer {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .loginScreen_description {
+    width: 100%;
+    font-size: 0.5rem;
+    font-weight: 200;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    z-index: 1;
+    color: rgb(255, 255, 255);
+  }
+  
+  .loginScreen_input {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 200;
+    text-align: center;
+    color: rgb(255, 255, 255);
+  }
+  
+  .loginScreen_input form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+  }
+  
+  .loginScreen_input form input {
+    background-color: rgba(232, 240, 254, 0.4);
+    color: fieldtext !important;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .loginScreen_input form button {
+    background-color: #e50914;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .loginScreen_input form button:hover {
+    background-color: #bb0404;
+  }
+  
+  .signin_button button {
+    cursor: pointer;
+    position: fixed;
+    right: 30px;
+    top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5vw;
+    color: #fff;
+    background-color: #bb0404;
+    border: none;
+  }
+  
+  .loginScreen_button {
+    cursor: pointer;
+    gap: 10px;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 0.5vw;
+    color: #fff;
+    background-color: #bb0404;
+    border: none;
+  }
+  
+  .signin_button button:hover {
+    background-color: #cc0707;
+  }
