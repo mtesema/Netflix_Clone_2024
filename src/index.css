@@ -4,7 +4,7 @@
 :root{
   --font-base: 'Lexen Deca', sans-serif;
   --font-secondary: 'Inter', sans-serif;
-  --bg-color: #111;
+  --bg-color: #141414
   --primary-color: #fffffff;
   --secondary-color: #e50914;
 }
@@ -18,14 +18,11 @@ img {
 }
 body {
   background-color: #111;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+

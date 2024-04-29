@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import "./Banner.css";
-import requests from "./axios/Request"
-import axios from "./axios/Axios";
+import requests from "../../Axios/Request"
+import axiosLocal from "../../Axios/Axios";
 
 function Banner() {
 
@@ -13,7 +13,9 @@ function Banner() {
  useEffect(() => {
     async function fetchData() {
 
-      const request = await axios.get(requests.fetchNetflixOriginals);
+      const request = await axiosLocal.get(requests.fetchNetflixOriginals);
+      console.log(request.data);
+      // Randomly select a movie from the list
       setMovie(request.data.results[
         Math.floor(Math.random() * request.data.results.length - 1)
       ])
@@ -36,7 +38,7 @@ function Banner() {
   return (
     <>
       <header
-        className="banner"
+        className="banner container-fluid"
         style={{
           backgroundImage: `url("https://images.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
           backgroundSize: "cover",

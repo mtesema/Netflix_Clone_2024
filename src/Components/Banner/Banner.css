@@ -8,6 +8,14 @@
   height: auto;
 }
 
+.banner {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  color: white;
+  object-fit: contain;
+}
+
 .banner_contents {
   color: white;
   margin-left: 30px;
@@ -18,7 +26,6 @@
 }
 
 .banner_title {
-  width: 1000px;
   height: auto;
   padding-bottom: 0.3rem;
 }
