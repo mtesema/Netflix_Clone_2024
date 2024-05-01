@@ -5,20 +5,39 @@ import "./Style/Nav.css";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import SignUpScreen from "../SignUpScreen/SignUpScreen";
 
 
 
 function Nav() {
-  const [hasScrolled, setHasScrolled] = useState(false);
+
+
+
+  const [hasScrolled, setHasScrolled] = useState(true);
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
-    if (scrollY > 20) {
+    if (scrollY > 30) {
       setHasScrolled(true);
     } else {
       setHasScrolled(false);
     }
   };
+
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const hoverOver = () => {
+    setIsHovered(true);
+  };
+
+  const hoverAway = () => {
+    setIsHovered(false);
+  };
+
+
+
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -30,7 +49,7 @@ function Nav() {
 
   return (
     <div
-      className={`d-flex justify-content-between pt-3 ${
+      className={`d-flex justify-content-between  ${
         hasScrolled ? "scrolled" : ""
       } nav_main`}
     >
@@ -59,7 +78,26 @@ function Nav() {
               alt="User Avatar"
             />
           </div>
-          <ArrowDropDownIcon />
+          <div
+            className="nav_accounts_name"
+            onMouseEnter={hoverOver}
+            onMouseLeave={hoverAway}
+          >
+            {/* Render the icon based on hover state */}
+            {isHovered ? (
+              <div>
+                <ArrowDropUpIcon />
+                {/* Render the dropdown list of accounts */}
+                {/* <ul>
+                  {accounts.map((account) => (
+                    <li key={account}>{account}</li>
+                  ))}
+                </ul> */}
+              </div>
+            ) : (
+              <ArrowDropDownIcon />
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,161 @@
+.SignInScreen__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-grow: 1;
+  padding: 0 5%;
+  margin-bottom: 50px;
+  max-width: 700px;
+  min-width: 585px;
+
+  height: auto;
+}
+
+.SignInScreen {
+  text-align: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  box-sizing: border-box;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 68px;
+  padding-bottom: 200px;
+}
+
+.SignInScreen header {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: start;
+  color: rgb(245, 240, 240);
+}
+
+.SignInScreen form label {
+  background-color: rgba(44, 43, 43, 0.7);
+  text-align: start;
+  color: rgb(155, 150, 150);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  border: 0 solid transparent;
+  border-radius: 5px;
+  padding: 20px 20px;
+  width: 400px;
+  font-weight: 300;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.signIn-button {
+  background-color: #e50914;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.signIn-button:hover {
+  background-color: #bb0404;
+}
+
+.signin_fillers {
+  text-align: center;
+  font-size: 1.2rem;
+  z-index: 1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: rgb(155, 150, 150);
+}
+.signin_fillers a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-align: center;
+  z-index: 1;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: rgb(210, 207, 207);
+}
+
+.signIn-with-code-button {
+  background-color: #4d4d4d;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: rgb(230, 227, 227);
+  font-weight: 400;
+  cursor: pointer;
+  width: 100%;
+}
+
+.signIn-with-code-button:hover {
+  background-color: #605f5f;
+}
+
+/* Additional style for the label text */
+.label-text {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 20px;
+  color: white;
+}
+
+/* Adjust positioning of the label text */
+.toggle-switch {
+  display: inline-flex;
+  align-items: center;
+  text-align: start;
+  padding: 20px 20px;
+  width: 400px;
+  font-weight: 300;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+
+.signup_link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.signin_fillers span {
+  color: white;
+}
+
+.signin_footer {
+  color: rgb(105, 103, 103);
+  text-align: start;
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 20px;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .SignInScreen__container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    background-color: black;
+    width: 100%;
+    padding: 0 0%;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+  }
+
+  .SignInScreen {
+    border-radius: 4px;
+    padding: 10px 40px;
+  }
+
+  .SignInScreen form label {
+    padding: 20px 20px;
+    width: 100%;
+  }
+}

@@ -23,100 +23,100 @@ function Footer() {
         </a>
       </div>
 
-      <ul class="member-footer-links">
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="/browse/audio-description">
-            <span class="member-footer-link-content">Audio Description</span>
+      <ul className="member-footer-links">
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="/browse/audio-description">
+            <span className="member-footer-link-content">Audio Description</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="http://ir.netflix.com/">
-            <span class="member-footer-link-content">Investor Relations</span>
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="http://ir.netflix.com/">
+            <span className="member-footer-link-content">Investor Relations</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
+        <li className="member-footer-link-wrapper">
           <a
-            class="member-footer-link"
+            className="member-footer-link"
             href="https://help.netflix.com/legal/privacy"
           >
-            <span class="member-footer-link-content">Privacy</span>
+            <span className="member-footer-link-content">Privacy</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
+        <li className="member-footer-link-wrapper">
           <a
-            class="member-footer-link"
+            className="member-footer-link"
             href="https://help.netflix.com/contactus"
           >
-            <span class="member-footer-link-content">Contact Us</span>
+            <span className="member-footer-link-content">Contact Us</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="https://help.netflix.com/">
-            <span class="member-footer-link-content">Help Center</span>
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="https://help.netflix.com/">
+            <span className="member-footer-link-content">Help Center</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="https://jobs.netflix.com/">
-            <span class="member-footer-link-content">Jobs</span>
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="https://jobs.netflix.com/">
+            <span className="member-footer-link-content">Jobs</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
+        <li className="member-footer-link-wrapper">
           <a
-            class="member-footer-link"
+            className="member-footer-link"
             href="https://help.netflix.com/legal/notices"
           >
-            <span class="member-footer-link-content">Legal Notices</span>
+            <span className="member-footer-link-content">Legal Notices</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="https://www.netflix.com/dnsspi">
-            <span class="member-footer-link-content">
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="https://www.netflix.com/dnsspi">
+            <span className="member-footer-link-content">
               Do Not Sell or Share My Personal Information
             </span>
           </a>
         </li>
 
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="/redeem">
-            <span class="member-footer-link-content">Gift Cards</span>
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="/redeem">
+            <span className="member-footer-link-content">Gift Cards</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="https://netflix.shop/">
-            <span class="member-footer-link-content">Netflix Shop</span>
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="https://netflix.shop/">
+            <span className="member-footer-link-content">Netflix Shop</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="/Cookies">
-            <span class="member-footer-link-content">Cookie Preferences</span>
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="/Cookies">
+            <span className="member-footer-link-content">Cookie Preferences</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="https://netflix.com/adchoices-us">
-            <span class="member-footer-link-content">Ad Choices</span>
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="https://netflix.com/adchoices-us">
+            <span className="member-footer-link-content">Ad Choices</span>
           </a>
         </li>
-        <li class="member-footer-link-wrapper">
-          <a class="member-footer-link" href="https://media.netflix.com/">
-            <span class="member-footer-link-content">Media Center</span>
+        <li className="member-footer-link-wrapper">
+          <a className="member-footer-link" href="https://media.netflix.com/">
+            <span className="member-footer-link-content">Media Center</span>
           </a>
         </li>
 
-        <li class="member-footer-link-wrapper">
+        <li className="member-footer-link-wrapper">
           <a
-            class="member-footer-link"
+            className="member-footer-link"
             href="https://help.netflix.com/legal/termsofuse"
           >
-            <span class="member-footer-link-content">Terms of Use</span>
+            <span className="member-footer-link-content">Terms of Use</span>
           </a>
         </li>
 
-        <li class="member-footer-link-wrapper">
+        <li className="member-footer-link-wrapper">
           <a
-            class="member-footer-link"
+            className="member-footer-link"
             href="https://help.netflix.com/legal/corpinfo"
           >
-            <span class="member-footer-link-content">
+            <span className="member-footer-link-content">
               Corporate Information
             </span>
           </a>
@@ -124,7 +124,7 @@ function Footer() {
       </ul>
 
       <div className="service_code_wrapper">
-        <button class="service-code">Service Code</button>
+        <button className="service-code">Service Code</button>
       </div>
 
       <div className="footer_copyright">© 1997 - 2024 Netflix, inc.</div>

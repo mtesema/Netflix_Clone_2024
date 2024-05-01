@@ -81,10 +81,9 @@
   }
   
   .loginScreen_input {
-    width: 100%;
-    font-size: 1.5rem;
-    font-weight: 200;
-    text-align: center;
+ 
+    font-size: 1.2rem;
+    width:100%;
     color: rgb(255, 255, 255);
   }
   
@@ -96,13 +95,14 @@
     padding: 10px 20px;
   }
   
-  .loginScreen_input form input {
+  .loginScreen_input form label {
     background-color: rgba(232, 240, 254, 0.4);
-    color: fieldtext !important;
+    color: #edeaea;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-weight: 600;
+    width: 400px;
+    font-weight: 200;
     cursor: pointer;
   }
   
@@ -149,3 +149,12 @@
   .signin_button button:hover {
     background-color: #cc0707;
   }
+  
+  @media (max-width: 768px) {
+    .loginScreen_input form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+

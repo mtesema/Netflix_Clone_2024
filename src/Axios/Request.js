@@ -1,8 +1,10 @@
 //Typically we use axios to make http requests
 //We need to import axios in our project
 
-const API_KEY =  "1aae303723b2affffbb0f152604b55bd"
+// const API_KEY =  "1aae303723b2affffbb0f152604b55bd"
 
+
+const API_KEY = process.env.REACT_APP_AXIOS_API_KEY;
 
 const requests = {
     fetchPopular: `/movie/popular?api_key=${API_KEY}&language=en-US`,

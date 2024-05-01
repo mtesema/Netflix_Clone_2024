@@ -13,18 +13,26 @@ function Banner() {
  useEffect(() => {
     async function fetchData() {
 
+      try {
+
       const request = await axiosLocal.get(requests.fetchNetflixOriginals);
-      console.log(request.data);
+      // console.log(request.data);
       // Randomly select a movie from the list
       setMovie(request.data.results[
         Math.floor(Math.random() * request.data.results.length - 1)
-      ])
+      ]); 
+      
       return request;
+      }
+      catch (error) {
+        console.log(error);
+      }
+     
     }
     fetchData();
   }, []);
 
-  console.log(movie);
+  // console.log(movie);
      
 
 

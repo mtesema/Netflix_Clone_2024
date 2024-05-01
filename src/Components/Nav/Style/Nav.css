@@ -1,5 +1,5 @@
 .nav_main {
-  height: 60px;
+  height: 80px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -17,16 +17,16 @@
   align-items: center;
   height: 100%;
   padding: 0 10px;
+
 }
 
 .left-nav{
-  position:fixed;
-  right:30px;
-  top: 30px;
   display: flex;
+  margin-right: 20px;
   justify-content: space-between;
   align-items: center;
   width: 250px;
+
 }
 .nav_icons{
   width: 150px;
@@ -36,11 +36,11 @@
   height: 100%;
 }
 .nav_accounts{
-  width:25px;
+  width:45px;
   display: flex;
   justify-content:flex-start;
   align-items: center;
-  height: 100%;
+
 }
 .accounts{
   display: flex;
@@ -48,6 +48,9 @@
   align-items: center;
   height: 100%;
   padding: 0 10px;
+}
+.nav_accounts_name{
+  cursor: pointer;
 }
 
 .nav_logo {
