@@ -9,24 +9,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 import { useNavigate } from "react-router-dom";
 
-
-
-function Nav() {
-
-
-
-  const [hasScrolled, setHasScrolled] = useState(true);
-
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    if (scrollY > 30) {
-      setHasScrolled(true);
-    } else {
-      setHasScrolled(false);
-    }
-  };
-
-
+function NavTemplate() {
   const [isHovered, setIsHovered] = useState(false);
 
   const hoverOver = () => {
@@ -37,44 +20,26 @@ function Nav() {
     setIsHovered(false);
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    // Clean up the event listener when component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
   const profileHandleClick = () => {
     Navigate("/profile");
   };
 
   return (
-    <div
-      className={`d-flex justify-content-between  ${
-        hasScrolled ? "scrolled" : ""
-      } nav_main`}
-    >
+    <>
+      <div className ="d-flex justify-content-between">
       <div className="right-nav">
-        <div className="nav_logo">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-            alt="Netflix Logo"
-          />
-        </div>
-        <div className="list_component">
-          <List />
+        <div className="nav_main">
+          <div className="nav_logo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+              alt="Netflix Logo"
+            />
+          </div>
         </div>
       </div>
 
       <div className="left-nav">
-        <div className="nav_icons">
-          <SearchIcon />
-          <NotificationsNoneIcon />
-          <div className="Kids_account">Kids</div>
-        </div>
         <div className="accounts">
           <div className="nav_accounts">
             <img
@@ -92,12 +57,6 @@ function Nav() {
             {isHovered ? (
               <div>
                 <ArrowDropUpIcon />
-                {/* Render the dropdown list of accounts */}
-                {/* <ul>
-                  {accounts.map((account) => (
-                    <li key={account}>{account}</li>
-                  ))}
-                </ul> */}
               </div>
             ) : (
               <ArrowDropDownIcon />
@@ -105,8 +64,10 @@ function Nav() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      
+    </>
   );
 }
 
-export default Nav;
+export default NavTemplate;

@@ -52,6 +52,7 @@ function Banner() {
           backgroundSize: "cover",
           backgroundPosition: "center center",
           paddingTop: "20%",
+     
         }}
       >
         <div className="banner_contents">

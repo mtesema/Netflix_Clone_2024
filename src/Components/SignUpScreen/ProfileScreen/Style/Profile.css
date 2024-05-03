@@ -1,0 +1,193 @@
+.nav_porfile_logo {
+  cursor: pointer;
+  position: fixed;
+  padding-top: 30px;
+  left: 30px;
+  width: 150px;
+  height: 150px;
+}
+
+.profile_main_container {
+  padding-top: 150px;
+}
+
+.profile_header {
+  width: 975px;
+}
+
+.profile_container {
+  padding: 30px 30px;
+  border-radius: 8px;
+  gap: 20px;
+
+  width: 1000px;
+}
+
+.profile_title {
+  font-size: 50px;
+  font-weight: 400px;
+  margin: 0;
+  padding-bottom: 5px;
+  padding-left: 16px;
+  border-bottom: rgb(69, 69, 69) 1px solid;
+}
+
+.user_avator {
+  width: 200px;
+  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
+  margin-right: 20px;
+}
+.user_avator img {
+  width: 100%;
+  height: auto;
+}
+
+.profile_info {
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  width: 100%;
+  color: white;
+}
+.profile_email {
+  font-size: 20px;
+  font-weight: 400;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  color: white;
+}
+
+.current_plan {
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  color: white;
+  border-bottom: rgb(84, 82, 82) 1px solid;
+}
+
+.Renewal_info {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan_list {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  border-bottom: rgb(84, 82, 82) 1px solid;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan_list ul {
+  list-style-type: none; /* Remove default list styles */
+  margin: 0;
+  padding: 0;
+}
+
+.plan_list li {
+  margin-left: 20px; /* Add spacing between list items */
+  margin-bottom: 10px;
+  display: flex;
+  gap: 300px;
+  align-items: center;
+  text-align: center;
+}
+
+.plan_list button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.plan_wrapper{
+  width: 150px;
+  align-items: start;
+  text-align: start;
+}
+
+.plan_wrapper span {
+  text-align: start;
+  
+}
+
+.plan_feature{
+  font-size: xx-small;
+  font-weight: 500;
+  color: #999;
+  text-align: left;
+}
+
+.subscribe {
+  margin-left: 10px;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.subscribe:hover {
+  background-color: #ff0f26;
+}
+
+.signout_button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+.signout {
+  background-color: #e50914;
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.signout:hover {
+  background-color: rgb(154, 4, 4);
+}
+
+@media (max-width: 768px) {
+  .user_avator {
+    align-items: center;
+    align-items: center center;
+  }
+  .profile_container {
+    flex-direction: column;
+
+    width: 500px;
+  }
+
+  .plan_list li {
+    gap: 50px;
+  }
+
+  .profile_header {
+    width: 475px;
+  }
+}
