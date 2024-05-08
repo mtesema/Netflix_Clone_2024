@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { login, logout, selectUser } from "../../../features/userSlice";
 import { auth } from "../../../firebase/firebase";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import PlanScreen from "../PlanScreen/PlanScreen";
 
 function ProfileScreen() {
   const user = useSelector(selectUser);
@@ -19,7 +20,7 @@ function ProfileScreen() {
     try {
       await auth.signOut();
       console.log("User logged out successfully.");
-      navigate("/"); // Redirect to "/signup" upon successful logout
+      navigate("/signup"); // Redirect to "/signup" upon successful logout
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -63,37 +64,8 @@ function ProfileScreen() {
                 <div className="Renewal_info">
                   <p>Renewal date: 01/01/01</p>
                 </div>
-                <div className=" plan_list">
-                  <ul>
-                    <li>
-                      <div className="plan_wrapper">
-                        <span>Netflix Standard</span>
-                        <p className="plan_feature"> 1080p</p>
-                      </div>
-                      <div>
-                        <button className="subscribe">Subscribe</button>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="plan_wrapper">
-                        <span>Netflix Baisc </span>
-                        <p className="plan_feature"> 480p</p>
-                      </div>
-                      <div>
-                        <button className="subscribe">Subscribe</button>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="plan_wrapper">
-                        <span>Premium</span>
-                        <p className="plan_feature"> 4k+HDR </p>
-                      </div>
-                      <div>
-                        <button className="subscribe">Subscribe</button>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+
+                <PlanScreen />
                 {/* Logout button */}
                 <div className="signout_button">
                   <button onClick={logoutHandler} className="signout">

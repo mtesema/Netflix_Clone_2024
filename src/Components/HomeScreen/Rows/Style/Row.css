@@ -28,11 +28,11 @@
 }
 
 .row_posterLarge{
-    max-height: 300px;
+    max-height: 400px;
 }
 
 .row_posterLarge:hover{
-    transform: scale(1.1);
+    transform: scale(1.15);
     opacity: 1;
 }
 

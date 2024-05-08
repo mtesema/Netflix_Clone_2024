@@ -9,12 +9,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 import { useNavigate } from "react-router-dom";
 
-
-
 function Nav() {
-
-
-
   const [hasScrolled, setHasScrolled] = useState(true);
 
   const handleScroll = () => {
@@ -25,7 +20,6 @@ function Nav() {
       setHasScrolled(false);
     }
   };
-
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -45,9 +39,12 @@ function Nav() {
     };
   }, []);
 
+  const Navigate = useNavigate();
+  const HomePageClickHandle = () => {
+    Navigate("/");
+  };
 
-  const Navigate = useNavigate()
-  const profileHandleClick = () => {
+  const profilePageClickHandle = () => {
     Navigate("/profile");
   };
 
@@ -60,6 +57,7 @@ function Nav() {
       <div className="right-nav">
         <div className="nav_logo">
           <img
+            onClick={HomePageClickHandle}
             src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
             alt="Netflix Logo"
           />
@@ -78,7 +76,7 @@ function Nav() {
         <div className="accounts">
           <div className="nav_accounts">
             <img
-              onClick={profileHandleClick}
+              onClick={profilePageClickHandle}
               src="https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp"
               alt="User Avatar"
             />

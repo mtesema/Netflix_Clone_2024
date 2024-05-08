@@ -4,6 +4,8 @@ import "./App.css";
 import HomeScreen from "./Components/HomeScreen/HomeScreen";
 import SignUpScreen from "./Components/SignUpScreen/SignUpScreen";
 import ProfileScreen from "./Components/SignUpScreen/ProfileScreen/ProfileScreen";
+import TVShowScreen from "./Components/TVShowScreen/TVShowScreen";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -51,6 +53,7 @@ function App() {
           <Route path="/" element={user ? <HomeScreen /> : <SignUpScreen />} />
           <Route path="/signup" element={<SignUpScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />
+          <Route path="/tvshows" element={<TVShowScreen />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>

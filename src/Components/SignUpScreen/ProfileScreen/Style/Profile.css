@@ -85,68 +85,6 @@
   align-items: center;
 }
 
-.plan_list {
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: white;
-  border-bottom: rgb(84, 82, 82) 1px solid;
-  width: 100%;
-  gap: 10px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.plan_list ul {
-  list-style-type: none; /* Remove default list styles */
-  margin: 0;
-  padding: 0;
-}
-
-.plan_list li {
-  margin-left: 20px; /* Add spacing between list items */
-  margin-bottom: 10px;
-  display: flex;
-  gap: 300px;
-  align-items: center;
-  text-align: center;
-}
-
-.plan_list button {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.plan_wrapper{
-  width: 150px;
-  align-items: start;
-  text-align: start;
-}
-
-.plan_wrapper span {
-  text-align: start;
-  
-}
-
-.plan_feature{
-  font-size: xx-small;
-  font-weight: 500;
-  color: #999;
-  text-align: left;
-}
-
-.subscribe {
-  margin-left: 10px;
-  background-color: #e50914;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-}
-
-.subscribe:hover {
-  background-color: #ff0f26;
-}
 
 .signout_button {
   margin-top: 20px;
@@ -156,7 +94,6 @@
   align-items: center;
   text-align: center;
 }
-
 
 
 .signout {
@@ -183,9 +120,6 @@
     width: 500px;
   }
 
-  .plan_list li {
-    gap: 50px;
-  }
 
   .profile_header {
     width: 475px;

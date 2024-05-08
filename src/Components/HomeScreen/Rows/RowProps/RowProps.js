@@ -1,5 +1,4 @@
 import React from "react";
-import Rows from "../Rows";
 import { useState, useEffect } from "react";
 import axiosLocal from "../../../../Axios/Axios";
 import "../Style/Row.css";

@@ -6,11 +6,11 @@ import SignInScreen from "./SignInScreen/SignInScreen";
 import { useNavigate } from "react-router-dom";
 
 function SignUpScreen() {
-  const [signIn, setSignIn] = React.useState(false);
+  const [signUp, setSignUp] = React.useState(false);
   
 //
-  const SignInHandler = () => {
-    setSignIn(true);
+  const SignUpHandler = () => {
+    setSignUp(true);
   };
 
   const Navigate = useNavigate();
@@ -31,12 +31,12 @@ function SignUpScreen() {
       </div>
 
       <div className="signin_button">
-        <button onClick={SignInHandler}>Sign In</button>
+        <button onClick={SignUpHandler}>Sign In</button>
       </div>
 
       <div className="loginScreen_gradient"></div>
 
-      {signIn ? (
+      {signUp ? (
         <SignInScreen />
       ) : (
         <div className="container-fluid">
@@ -63,7 +63,7 @@ function SignUpScreen() {
                     </div>
 
                     <button
-                      onClick={SignInHandler}
+                      onClick={SignUpHandler}
                       className="loginScreen_button d-flex align-items-center"
                     >
                       Get Started

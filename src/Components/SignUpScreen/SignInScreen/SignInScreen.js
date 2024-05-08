@@ -1,13 +1,19 @@
 import React from "react";
 import "./Style/SigninStyle.css";
 import { useRef } from "react";
-import { db, auth } from "../../../firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 function SignInScreen() {
+  //monitoring the state of the form signin info email and password
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+
+
+  // to navigate to different pages
+  const navigate = useNavigate();
 
   const signUp = async (e) => {
     e.preventDefault();
@@ -20,6 +26,7 @@ function SignInScreen() {
       const authUser = userCredential.user;
       console.log("User signed up:", authUser);
       // Optionally, you can return or perform additional actions after successful sign-up
+       navigate("/profile");
       return authUser;
     } catch (error) {
       console.error("Error creating user:", error);
@@ -41,6 +48,7 @@ function SignInScreen() {
       const authUser = signingInfo.user;
       console.log("User signed in:", authUser);
       // Optionally, you can return or perform additional actions after successful sign-in
+         navigate("/");
       return authUser;
     } catch (error) {
       alert(error.message);
