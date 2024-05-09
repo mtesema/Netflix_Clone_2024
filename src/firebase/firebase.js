@@ -6,6 +6,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
+
 //if you want to impor the firebase auth library directly from firebase
 // import {
 //  auth

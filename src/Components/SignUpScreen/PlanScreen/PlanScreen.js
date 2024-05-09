@@ -3,24 +3,20 @@ import "./Style/Plan.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { db, auth } from "../../../firebase/firebase";
-import {
-  collection,
-  getDocs,
-  addDoc,
-} from "firebase/firestore/lite"; 
-import { onSnapshot } from "firebase/firestore"; // Import onSnapshot from Firestore
+import { collection, getDocs, doc, addDoc } from "firebase/firestore/lite";
+import { onSnapshot, query } from "firebase/firestore"; // Import onSnapshot from Firestore
 
 import { selectUser } from "../../../features/userSlice";
-import {loadStripe} from "@stripe/stripe-js"
+import { loadStripe } from "@stripe/stripe-js";
 
 function PlanScreen() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // Add a loading state
   const user = useSelector(selectUser);
- if (user) {
-   console.log("user ", user.uid);
-   console.log("user email", user.email)
- }
+  if (user) {
+    console.log("Current user: ", user.uid);
+    console.log("user email:", user.email);
+  }
 
   // Use the useEffect hook to perform side effects in function components
   // This hook is used to fetch products from the database when the component mounts
@@ -69,48 +65,32 @@ function PlanScreen() {
     fetchProducts();
   }, []);
 
-
-
-
-
-
   // Define an async function to load Stripe Checkout
 
   console.log("Products:", products); // Check if products state is populated correctly
+
 
   const loadCheckout = async (priceId) => {
     try {
       if (!priceId || !user.uid) {
         throw new Error("Price ID or user UID is missing or invalid");
       }
-
-      const checkoutSessionsRef = collection(
+  
+      const Checkout_Sessions = await addDoc(collection(
         db, // Reference to the Firestore database
-        "customers", // Collection name
-        user.uid, // User's UID (assuming 'auth' is previously defined)
-        "checkout_sessions" // Subcollection name
-      );
-
-      const docRef = await addDoc(checkoutSessionsRef, {
+        `/customers/${user.uid}/checkout_sessions` // Path to the collection
+      ), {
         price: priceId,
         success_url: window.location.origin,
         cancel_url: window.location.origin,
       });
 
-      // Use onSnapshot directly on the DocumentReference
-      onSnapshot(docRef, async (snap) => {
-        const { error, sessionId } = snap.data();
-        if (error) {
-          alert(`An error occurred: ${error.message}`);
-        }
+      console.log("Checkout_Sessions:", Checkout_Sessions);
+  
+      
+     
 
-        if (sessionId) {
-          const stripe = await loadStripe(
-            "pk_test_51PCCUUAnM22dHA1ljbzwLOeXU1p5i87mpL0SGQ0BT58yE3qimVO4bTNtsmFmXCn99Ju9rC58COHjwh2RYFUpSBM000t5zVPq7O"
-          );
-          stripe.redirectToCheckout({ sessionId });
-        }
-      });
+        
     } catch (error) {
       console.error("Error loading checkout:", error);
       throw error;
@@ -134,12 +114,17 @@ function PlanScreen() {
                   {product.prices.map((price) => (
                     <button
                       key={price.id}
-                      onClick={() => loadCheckout(price.id)}
+                      onClick={() => {
+                        console.log("Current Price ID:", price.id);
+                        // Call the 'loadCheckout' function with the price ID
+                        loadCheckout(price.id)}}
                       className="subscribe"
                     >
                       Subscribe
                     </button>
+                    
                   ))}
+
                 </div>
               </li>
             ))}

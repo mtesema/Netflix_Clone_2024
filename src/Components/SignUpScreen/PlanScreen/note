@@ -1,0 +1,36 @@
+  const checkoutSessionsRef = query (collection(
+        db, // Reference to the Firestore database
+        `/customers/${user.uid}/checkout_sessions` // Path to the collection
+      ));
+  
+
+      const docRef = await addDoc(checkoutSessionsRef, {
+        price: priceId,
+        success_url: window.location.origin,
+        cancel_url: window.location.origin,
+      });
+
+
+      Checkout_Sessions.onSnapshot((doc) => {
+        try {
+          if (doc.exists()) {
+            const { error, sessionId } = doc.data();
+      
+            if (error) {
+              alert(`An error occurred: ${error.message}`);
+            }
+      
+            if (sessionId) {
+              const stripe = loadStripe(
+                "pk_test_51PCCUUAnM22dHA1ljbzwLOeXU1p5i87mpL0SGQ0BT58yE3qimVO4bTNtsmFmXCn99Ju9rC58COHjwh2RYFUpSBM000t5zVPq7O"
+              );
+              stripe.redirectToCheckout({ sessionId });
+            }
+            console.log("Current data: ", doc.data());
+          } else {
+            console.log("No data available");
+          }
+        } catch (error) {
+          console.error("Error processing snapshot:", error);
+        }
+      });
