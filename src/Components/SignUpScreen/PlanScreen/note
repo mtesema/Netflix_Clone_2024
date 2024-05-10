@@ -1,36 +1,156 @@
-  const checkoutSessionsRef = query (collection(
-        db, // Reference to the Firestore database
-        `/customers/${user.uid}/checkout_sessions` // Path to the collection
-      ));
-  
+  // Access the data object from the snapshot
+    const data = docSnap.data();
 
-      const docRef = await addDoc(checkoutSessionsRef, {
+    // Check if the data object exists and contains the necessary fields
+    if (data) {
+      // Access the sessionId field
+      const sessionId = data.sessionId;
+
+      // Access other fields such as price, success_url, and cancel_url
+      const price = data.price;
+      const successUrl = data.success_url;
+      const cancelUrl = data.cancel_url;
+
+      // Access the lineItems array
+      const lineItems = data.lineItems;
+
+      // Log or perform any further actions with the retrieved data
+      console.log("Session ID:", sessionId);
+      console.log("Price:", price);
+      console.log("Success URL:", successUrl);
+      console.log("Cancel URL:", cancelUrl);
+      console.log("Line Items:", lineItems);
+    } else {
+      console.error("Data not found in the document snapshot");
+    }
+
+
+
+const loadCheckout = async (priceId) => {
+  try {
+    if (!priceId || !user.uid) {
+      throw new Error("Price ID or user UID is missing or invalid");
+    }
+
+    console.log("Data to be added:", {
+      price: priceId,
+      success_url: window.location.origin,
+      cancel_url: window.location.origin,
+    });
+
+    const CheckoutSessions = await addDoc(
+      collection(firestore, `/customers/${user.uid}/checkout_sessions`),
+      {
         price: priceId,
         success_url: window.location.origin,
         cancel_url: window.location.origin,
-      });
+      }
+    );
+    console.log("Checkout_Sessions:", CheckoutSessions);
 
+    // Define a query to listen for changes in the checkout_sessions collection for the user
+    const checkoutSessionsQuery = collection(
+      firestore,
+      `/customers/${user.uid}/checkout_sessions`
+    );
 
-      Checkout_Sessions.onSnapshot((doc) => {
+    // Attach a listener to the query
+    const unsubscribe = onSnapshot(checkoutSessionsQuery, (snapshot) => {
+      snapshot.forEach((doc) => {
         try {
-          if (doc.exists()) {
-            const { error, sessionId } = doc.data();
-      
-            if (error) {
-              alert(`An error occurred: ${error.message}`);
-            }
-      
-            if (sessionId) {
-              const stripe = loadStripe(
-                "pk_test_51PCCUUAnM22dHA1ljbzwLOeXU1p5i87mpL0SGQ0BT58yE3qimVO4bTNtsmFmXCn99Ju9rC58COHjwh2RYFUpSBM000t5zVPq7O"
-              );
-              stripe.redirectToCheckout({ sessionId });
-            }
-            console.log("Current data: ", doc.data());
-          } else {
-            console.log("No data available");
+          const { error, sessionId } = doc.data();
+
+          if (error) {
+            alert(`An error occurred: ${error.message}`);
           }
+
+          if (sessionId) {
+            const stripe = loadStripe(
+              "pk_test_51PCCUUAnM22dHA1ljbzwLOeXU1p5i87mpL0SGQ0BT58yE3qimVO4bTNtsmFmXCn99Ju9rC58COHjwh2RYFUpSBM000t5zVPq7O"
+            );
+            stripe.redirectToCheckout({ sessionId });
+          }
+          console.log("Current data: ", doc.data());
         } catch (error) {
           console.error("Error processing snapshot:", error);
         }
       });
+    });
+
+    // Return the unsubscribe function
+    return unsubscribe;
+  } catch (error) {
+    console.error("Error loading checkout:", error);
+    throw error;
+  }
+};
+
+const loadCheckout = async (priceId) => {
+  try {
+    const checkoutSessionsRef = collection(
+      db,
+      `/customers/${user.uid}/checkout_sessions`
+    );
+
+    // Create a new checkout session document with required parameters
+    const checkoutSessionDocRef = await addDoc(checkoutSessionsRef, {
+      price: priceId,
+      success_url: window.location.origin,
+      cancel_url: window.location.origin,
+      lineItems: [
+        // Provide line items array with at least one item
+        { price: priceId, quantity: 1 }, // Adjust quantity as needed
+      ],
+    });
+
+    console.log("Checkout Session created with ID:", checkoutSessionDocRef.id);
+
+    // Fetch the newly created checkout session document using getDoc
+    const checkoutSessionDocSnapshot = await getDoc(checkoutSessionDocRef);
+    console.log("Checkout Session Doc Snapshot", checkoutSessionDocSnapshot);
+
+    if (checkoutSessionDocSnapshot.exists()) {
+      // Retrieve the sessionId directly from the snapshot data
+      const sessionId = checkoutSessionDocSnapshot.data().sessionId;
+      console.log("Session ID:", sessionId);
+
+      // Load Stripe.js with the publishable key
+      const stripe = await loadStripe(
+        "pk_test_51PCCUUAnM22dHA1ljbzwLOeXU1p5i87mpL0SGQ0BT58yE3qimVO4bTNtsmFmXCn99Ju9rC58COHjwh2RYFUpSBM000t5zVPq7O"
+      );
+      stripe.redirectToCheckout({ sessionId }); // Redirect to checkout using sessionId
+    } else {
+      throw new Error("Failed to create checkout session");
+    }
+  } catch (error) {
+    console.error("Error loading checkout:", error);
+    throw error;
+  }
+};
+
+
+const loadCheckout = async  (priceId) => {
+
+  const docRef = await db.
+  collection("customers")
+  .doc(user.uid)
+  .collection("checkout_sessions")
+  .add({
+    price: priceId,
+    success_url: window.location.origin,
+    cancel_url: window.location.origin
+  });
+
+  docRef.onSnapshot(async (snap) => {
+    const { error, sessionId } = snap.data();
+    if (error) {
+      // Show an error to your customer and inspect your Cloud Functions logs in the Firebase console
+      console.log(`An error occured: ${error.message}`);
+    }
+    if (sessionId) {
+      // We have a session, let's redirect to Checkout
+      // Init Stripe
+      const stripe = await loadStripe("pk_test_51PCCUUAnM22dHA1ljbzwLOeXU1p5i87mpL0SGQ0BT58yE3qimVO4bTNtsmFmXCn99Ju9rC58COHjwh2RYFUpSBM000t5zVPq7O");
+      stripe.redirectToCheckout({ sessionId });
+    }
+  });

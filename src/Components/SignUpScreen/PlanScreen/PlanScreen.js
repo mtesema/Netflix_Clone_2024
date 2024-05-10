@@ -1,9 +1,18 @@
 import React, { useEffect } from "react";
 import "./Style/Plan.css";
 import { useState } from "react";
+import "firebase/firestore";
 import { useSelector } from "react-redux";
 import { db, auth } from "../../../firebase/firebase";
-import { collection, getDocs, doc, addDoc } from "firebase/firestore/lite";
+
+import {
+  collection,
+  getDocs,
+  doc,
+  addDoc,
+  getDoc,
+  setDoc
+} from "firebase/firestore/lite";
 import { onSnapshot, query } from "firebase/firestore"; // Import onSnapshot from Firestore
 
 import { selectUser } from "../../../features/userSlice";
@@ -14,7 +23,7 @@ function PlanScreen() {
   const [loading, setLoading] = useState(true); // Add a loading state
   const user = useSelector(selectUser);
   if (user) {
-    console.log("Current user: ", user.uid);
+    console.log("Current user uid: ", user.uid);
     console.log("user email:", user.email);
   }
 
@@ -69,34 +78,43 @@ function PlanScreen() {
 
   console.log("Products:", products); // Check if products state is populated correctly
 
-
-  const loadCheckout = async (priceId) => {
-    try {
-      if (!priceId || !user.uid) {
-        throw new Error("Price ID or user UID is missing or invalid");
-      }
-  
-      const Checkout_Sessions = await addDoc(collection(
-        db, // Reference to the Firestore database
-        `/customers/${user.uid}/checkout_sessions` // Path to the collection
-      ), {
+const loadCheckout = async (priceId) => {
+  try {
+    // Add a new document to the checkout sessions collection
+    const docRef = await addDoc(
+      collection(db, `customers/${user.uid}/checkout_sessions`),
+      {
         price: priceId,
         success_url: window.location.origin,
         cancel_url: window.location.origin,
-      });
+        lineItems: [{ price: priceId, quantity: 1 }],
+      }
+    );
 
-      console.log("Checkout_Sessions:", Checkout_Sessions);
-  
-      
-     
+    // Get the snapshot of the newly added document
+    const docSnap = await getDoc(docRef);
 
-        
-    } catch (error) {
-      console.error("Error loading checkout:", error);
-      throw error;
+    console.log("checkout session id:", docRef.id);
+
+    // Get the data from the snapshot
+    const { error, sessionId } = docSnap.data();
+
+    if (error) {
+      alert(`An error occurred: ${error.message}`);
     }
-  };
 
+    if (sessionId) {
+      const stripe = await loadStripe(
+        "pk_test_51PCCUUAnM22dHA1ljbzwLOeXU1p5i87mpL0SGQ0BT58yE3qimVO4bTNtsmFmXCn99Ju9rC58COHjwh2RYFUpSBM000t5zVPq7O"
+      );
+      stripe.redirectToCheckout({ sessionId });
+    } else {
+      console.error("No checkout session ID returned");
+    }
+  } catch (error) {
+    console.error("Error loading checkout:", error);
+  }
+};
   return (
     <>
       <div className="plan_list">
@@ -117,14 +135,13 @@ function PlanScreen() {
                       onClick={() => {
                         console.log("Current Price ID:", price.id);
                         // Call the 'loadCheckout' function with the price ID
-                        loadCheckout(price.id)}}
+                        loadCheckout(price.id);
+                      }}
                       className="subscribe"
                     >
                       Subscribe
                     </button>
-                    
                   ))}
-
                 </div>
               </li>
             ))}
