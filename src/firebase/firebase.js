@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
-import { getAuth } from "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBcmhzZPR5N8p_ihy2DinrOKeTI2lKOo_M",
@@ -12,12 +12,15 @@ const firebaseConfig = {
   measurementId: "G-TL1VD58TPB",
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore(firebaseApp);
-console.log("My database:", db);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-// Get authentication instance
-const auth = getAuth(firebaseApp);
-console.log("Auth instance:", auth);
+// ` To use fire base data base
 
-export { db, auth };
+const db = firebaseApp.firestore();
+
+// ` To use fire base authentication service
+
+const auth = firebase.auth();
+
+export { auth };
+export default db;

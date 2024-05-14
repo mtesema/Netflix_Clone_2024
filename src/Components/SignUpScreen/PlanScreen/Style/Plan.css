@@ -28,7 +28,7 @@
 }
 
 .plan_list li:hover {
-  background-color: rgb(248, 244, 244,0.1);
+  background-color: rgb(248, 244, 244,0.05);
   cursor: pointer;
   opacity: 1;
 }
@@ -57,6 +57,7 @@
 }
 
 .subscribe {
+  width: 200px;
   margin-left: 10px;
   background-color: #e50914;
   color: #fff;
@@ -66,7 +67,21 @@
 }
 
 .subscribe:hover {
-  background-color: #ff0f26;
+  background-color: #ac0314;
+}
+
+.current_subscription {
+  width: 200px;
+  margin-left: 10px;
+  background-color: gray;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.current_subscription:hover {
+  background-color: gray;
 }
 
 .signout_button {

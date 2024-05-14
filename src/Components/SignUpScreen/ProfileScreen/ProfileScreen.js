@@ -56,14 +56,7 @@ function ProfileScreen() {
                   <p>{user ? user.email : ""}</p>
                   {/*Check if user exists before accessing email */}
                 </div>
-                <div className="current_plan">
-                  <p>
-                    Plan <span>(Current Plan: Standard)</span>
-                  </p>
-                </div>
-                <div className="Renewal_info">
-                  <p>Renewal date: 01/01/01</p>
-                </div>
+
 
                 <PlanScreen />
                 {/* Logout button */}
