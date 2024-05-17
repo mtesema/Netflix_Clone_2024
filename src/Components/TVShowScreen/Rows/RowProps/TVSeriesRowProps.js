@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axiosLocal from "../../../../Axios/Axios";
 import "../Style/TVSeriesRow.css";
-
 function TVSeriesRowProps(props) {
   const { title, fetchUrl, isLargeRow = false } = props;
   const [series, setTVSeries] = useState([]);

@@ -17,6 +17,7 @@ import { auth } from "../src/firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 
+// Function to check if user is logged in
 
 function App() {
   const user = useSelector(selectUser);

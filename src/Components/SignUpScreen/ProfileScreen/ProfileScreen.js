@@ -1,7 +1,10 @@
 import React from "react";
 import "./Style/Profile.css";
 import { useSelector } from "react-redux";
+
 import { selectUser } from "../../../features/userSlice";
+
+
 import { auth } from "../../../firebase/firebase";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import PlanScreen from "../PlanScreen/PlanScreen";

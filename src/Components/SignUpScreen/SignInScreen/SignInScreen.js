@@ -142,7 +142,11 @@ function SignInScreen() {
           <p className="signin_footer">
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot. Learn more.{" "}
+
             <a href="https://www.netflix.com/login">Learn more.</a>
+
+            <a href="https://policies.google.com/terms">Learn more.</a>
+
           </p>
         </form>
       </div>

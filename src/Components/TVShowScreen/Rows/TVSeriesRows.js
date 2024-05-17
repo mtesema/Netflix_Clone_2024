@@ -3,7 +3,7 @@ import TVSeriesRowProps from "./RowProps/TVSeriesRowProps";
 import requests from "../../../Axios/Request";
 import "../Style/TVShowScreen.css";
 
-function TVSeriesRows({selectedGenre}) {
+function TVSeriesRows({ selectedGenre }) {
   return (
     <>
       <div className="row_series_container">

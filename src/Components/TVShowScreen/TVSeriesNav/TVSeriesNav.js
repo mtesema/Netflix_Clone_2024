@@ -37,8 +37,13 @@ function TVSeriesNav() {
   // console.log(genres);
   // Extract the genre IDs from the genres array
   // const genreIds = TVSeriesData.genres.map((genre) => genre.id);
+
   // // console.log("List of genre IDs:", genreIds);
   // // State variable to track whether the dropdown is open or not
+
+  // console.log("List of genre IDs:", genreIds);
+  // State variable to track whether the dropdown is open or not
+
   const [isOpen, setIsOpen] = useState(false);
   // State variable to track the selected genre
   const [selectedGenre, setSelectedGenre] = useState([]);
