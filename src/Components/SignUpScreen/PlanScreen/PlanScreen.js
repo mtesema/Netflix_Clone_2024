@@ -7,40 +7,37 @@ import { selectUser } from "../../../features/userSlice";
 import { loadStripe } from "@stripe/stripe-js";
 
 function PlanScreen() {
-  const STRIPE_APP_KEY = process.env.REACT_APP_STRIPE_APP_KEY;
-
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [subscription, setSubscription] = useState(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const user = useSelector(selectUser);
   if (user) {
     console.log("Current user uid: ", user.uid);
     console.log("user email:", user.email);
   }
 
-  useEffect(() => {
-    if (user && user.uid) {
-      db.collection("customers")
-        .doc(user.uid) // Here, accessing user.uid instead of user.id
-        .collection("subscriptions")
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach(async (subscription) => {
-            setSubscription({
-              role: subscription.data().role,
-              current_period_end:
-                subscription.data().current_period_end.seconds,
-              current_period_start:
-                subscription.data().current_period_start.seconds,
-            });
+useEffect(() => {
+  if (user && user.uid) {
+    db.collection("customers")
+      .doc(user.uid) // Here, accessing user.uid instead of user.id
+      .collection("subscriptions")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach(async (subscription) => {
+          setSubscription({
+            role: subscription.data().role,
+            current_period_end: subscription.data().current_period_end.seconds,
+            current_period_start:
+              subscription.data().current_period_start.seconds,
           });
         });
-    }
-  }, [user, dispatch]);
+      });
+  }
+}, [user, dispatch]);
 
-  console.log("subscription", subscription);
+console.log("subscription", subscription);
 
   useEffect(() => {
     db.collection("products")
@@ -66,7 +63,6 @@ function PlanScreen() {
 
   console.log("Products:", products); // Check if products state is populated correctly
 
-  //Load the checkout info from Stripe and firebase
   const loadCheckout = async (priceId) => {
     const docRef = await db
       .collection("customers")
@@ -79,12 +75,9 @@ function PlanScreen() {
       });
 
     const docSnap = await docRef;
-
-    //check the load info
     console.log(docSnap);
     console.log("checkout session id:", docRef.id);
 
-    //if succesful redirect to stripe for a payment
     docRef.onSnapshot(async (snap) => {
       const { error, sessionId } = snap.data();
       if (error) {
@@ -94,76 +87,77 @@ function PlanScreen() {
       if (sessionId) {
         // We have a session, let's redirect to Checkout
         // Init Stripe
-        // copy and past your api key here 
-        const stripe = await loadStripe(`${STRIPE_APP_KEY}`);
+        const stripe = await loadStripe(
+          "pk_test_51PCCUUAnM22dHA1ljbzwLOeXU1p5i87mpL0SGQ0BT58yE3qimVO4bTNtsmFmXCn99Ju9rC58COHjwh2RYFUpSBM000t5zVPq7O"
+        );
         stripe.redirectToCheckout({ sessionId });
       }
     });
   };
 
-  return (
-    <>
-      <div className="plan_list">
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <div>
-            {subscription ? (
-              <div className="current_plan">
-                <p>
-                  Plan <span>Current Plan: {subscription.role}</span>
-                </p>
-              </div>
-            ) : null}
-            {subscription ? (
-              <div className="Renewal_info">
-                <span>
-                  Renewal date:{" "}
-                  {new Date(
-                    subscription.current_period_end * 1000
-                  ).toLocaleDateString()}
-                </span>
-              </div>
-            ) : null}
-            {/* Render the list of products */}
-            {Object.entries(products).map(([productId, productData]) => {
-              // Add logic to check if the user's subscription is active
-              const isCurrentPackage =
-                productData.name &&
-                subscription &&
-                typeof subscription.role === "string" &&
-                productData.name
-                  .toLowerCase()
-                  .includes(subscription.role.toLowerCase());
+return (
+  <>
+    <div className="plan_list">
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          {subscription ? (
+            <div className="current_plan">
+              <p>
+                Plan <span>Current Plan: {subscription.role}</span>
+              </p>
+            </div>
+          ) : null}
+          {subscription ? (
+            <div className="Renewal_info">
+              <span>
+                Renewal date:{" "}
+                {new Date(
+                  subscription.current_period_end *1000
+                ).toLocaleDateString()}
+              </span>
+            </div>
+          ) : null}
+          {/* Render the list of products */}
+          {Object.entries(products).map(([productId, productData]) => {
+            // Add logic to check if the user's subscription is active
+            const isCurrentPackage =
+              productData.name &&
+              subscription &&
+              typeof subscription.role === "string" &&
+              productData.name
+                .toLowerCase()
+                .includes(subscription.role.toLowerCase());
 
-              return (
-                <li key={productId}>
-                  <div className="plan_wrapper">
-                    <span>{productData.name}</span>
-                    <p className="plan_feature">{productData.description}</p>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() =>
-                        !isCurrentPackage &&
-                        loadCheckout(productData.prices.priceId)
-                      }
-                      className={`${
-                        isCurrentPackage && "current_subscription"
-                      } subscribe`}
-                      disabled={isCurrentPackage}
-                      // Disable button if subscription is not active
-                    >
-                      {isCurrentPackage ? "Current Package" : "Subscribe"}
-                    </button>
-                  </div>
-                </li>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </>
-  );
+            return (
+              <li key={productId}>
+                <div className="plan_wrapper">
+                  <span>{productData.name}</span>
+                  <p className="plan_feature">{productData.description}</p>
+                </div>
+                <div>
+                  <button
+                    onClick={() =>
+                      !isCurrentPackage &&
+                      loadCheckout(productData.prices.priceId)
+                    }
+                    className={`${
+                      isCurrentPackage && "current_subscription"
+                    } subscribe`}
+                    disabled={isCurrentPackage}
+                    // Disable button if subscription is not active
+                  >
+                    {isCurrentPackage ? "Current Package" : "Subscribe"}
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </>
+);
 }
 export default PlanScreen;
