@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Style/TVShowScreen.css";
 import TVSeriesNav from "./TVSeriesNav/TVSeriesNav";
 import Rows from "./Rows/TVSeriesRows";

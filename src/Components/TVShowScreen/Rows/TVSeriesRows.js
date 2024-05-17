@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import TVSeriesRowProps from "./RowProps/TVSeriesRowProps";
 import requests from "../../../Axios/Request";
 import "../Style/TVShowScreen.css";
