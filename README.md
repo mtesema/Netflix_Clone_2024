@@ -1,3 +1,7 @@
+
+Sign in with test123@gmail.com (password 12345678) OR Sign up with any email to see the homepage. The password has to be 8 characters or more (try 1 through 8). 
+
+
 # Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
