@@ -4,11 +4,8 @@
 
  
 
-const API_KEY =  "1aae303723b2affffbb0f152604b55bd"
 
- 
-
-// const API_KEY = process.env.REACT_APP_AXIOS_API_KEY;
+const API_KEY = process.env.REACT_APP_AXIOS_API_KEY;
 
  
 
