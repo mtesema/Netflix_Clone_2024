@@ -9,8 +9,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { useNavigate } from "react-router-dom";
 import TVSeriesData from "../Data";
 
-import TVSeriesRowProps from "../Rows/RowProps/TVSeriesRowProps";
-import TVSeriesRows from "../Rows/TVSeriesRows";
+
 function TVSeriesNav() {
   //-----------------------------------------------
   // State variable to track whether the user has scrolled or not
@@ -37,7 +36,7 @@ function TVSeriesNav() {
   const genres = TVSeriesData.genres;
   // console.log(genres);
   // Extract the genre IDs from the genres array
-  const genreIds = TVSeriesData.genres.map((genre) => genre.id);
+  // const genreIds = TVSeriesData.genres.map((genre) => genre.id);
   // console.log("List of genre IDs:", genreIds);
   // State variable to track whether the dropdown is open or not
   const [isOpen, setIsOpen] = useState(false);

@@ -13,10 +13,11 @@ import {
   Navigate,
  
 } from "react-router-dom"; // Import BrowserRouter
-import { db, auth } from "../src/firebase/firebase";
+import { auth } from "../src/firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
-import { useNavigate } from "react-router-dom";
+
+// Function to check if user is logged in
 
 function App() {
   const user = useSelector(selectUser);

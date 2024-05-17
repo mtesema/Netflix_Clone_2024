@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+
 import "./Style/SignUpScreen.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SignInScreen from "./SignInScreen/SignInScreen";

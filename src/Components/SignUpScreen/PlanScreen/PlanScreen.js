@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Style/Plan.css";
 import "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
-import { auth } from "../../../firebase/firebase";
+
 import db from "../../../firebase/firebase";
 import { selectUser } from "../../../features/userSlice";
 import { loadStripe } from "@stripe/stripe-js";

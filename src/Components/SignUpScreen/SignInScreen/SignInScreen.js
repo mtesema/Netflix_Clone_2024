@@ -121,7 +121,7 @@ function SignInScreen() {
 
           {/* Forgot Password Link */}
           <div className="signin_fillers">
-            <a href=""> Forgot Password?</a>
+            <a href="https://www.netflix.com/LoginHelp"> Forgot Password?</a>
           </div>
 
           {/* Remember Me Toggle */}
@@ -141,7 +141,8 @@ function SignInScreen() {
           {/* Footer */}
           <p className="signin_footer">
             This page is protected by Google reCAPTCHA to ensure you're not a
-            bot. Learn more. <a href="">Learn more.</a>
+            bot. Learn more.{" "}
+            <a href="https://policies.google.com/terms">Learn more.</a>
           </p>
         </form>
       </div>
